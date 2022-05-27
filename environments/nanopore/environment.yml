@@ -5,4 +5,8 @@ channels:
   - defaults
 dependencies:
   - pyyaml=5.3.1
-  - artic-tools
+  - medaka
+  - artic-tools=0.3.1
+  - bcftools=1.12
+  - trim-galore
+  - longshot
