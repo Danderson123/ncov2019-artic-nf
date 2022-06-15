@@ -80,6 +80,7 @@ process articMinIONMedaka {
 
     """
     artic minion --medaka \
+    --medaka-model r941_min_high_g351 \
     ${minionFinalConfig} \
     --threads ${task.cpus} \
     --scheme-directory ${schemeRepo} \

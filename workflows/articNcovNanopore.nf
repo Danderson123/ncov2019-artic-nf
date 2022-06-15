@@ -41,18 +41,18 @@ workflow sequenceAnalysisNanopolish {
 
       articRemoveUnmappedReads(articMinIONNanopolish.out.mapped)
 
-      makeQCCSV(articMinIONNanopolish.out.ptrim
-                                     .join(articMinIONNanopolish.out.consensus_fasta, by: 0)
-                                     .combine(articDownloadScheme.out.reffasta))
+      //makeQCCSV(articMinIONNanopolish.out.ptrim
+      //                               .join(articMinIONNanopolish.out.consensus_fasta, by: 0)
+      //                               .combine(articDownloadScheme.out.reffasta))
 
-      makeQCCSV.out.csv.splitCsv()
-                       .unique()
-                       .branch {
-                           header: it[-1] == 'qc_pass'
-                           fail: it[-1] == 'FALSE'
-                           pass: it[-1] == 'TRUE'
-                       }
-                       .set { qc }
+      //makeQCCSV.out.csv.splitCsv()
+      //                 .unique()
+      //                 .branch {
+      //                     header: it[-1] == 'qc_pass'
+      //                     fail: it[-1] == 'FALSE'
+      //                     pass: it[-1] == 'TRUE'
+      //                 }
+      //                 .set { qc }
 
      writeQCSummaryCSV(qc.header.concat(qc.pass).concat(qc.fail).toList())
 
@@ -89,23 +89,23 @@ workflow sequenceAnalysisMedaka {
 
       articRemoveUnmappedReads(articMinIONMedaka.out.mapped)
 
-      makeQCCSV(articMinIONMedaka.out.ptrim.join(articMinIONMedaka.out.consensus_fasta, by: 0)
-                           .combine(articDownloadScheme.out.reffasta))
+      //makeQCCSV(articMinIONMedaka.out.ptrim.join(articMinIONMedaka.out.consensus_fasta, by: 0)
+      //                     .combine(articDownloadScheme.out.reffasta))
 
-      makeQCCSV.out.csv.splitCsv()
-                       .unique()
-                       .branch {
-                           header: it[-1] == 'qc_pass'
-                           fail: it[-1] == 'FALSE'
-                           pass: it[-1] == 'TRUE'
-                       }
-                       .set { qc }
+      //makeQCCSV.out.csv.splitCsv()
+      //                 .unique()
+      //                 .branch {
+      //                     header: it[-1] == 'qc_pass'
+      //                     fail: it[-1] == 'FALSE'
+      //                     pass: it[-1] == 'TRUE'
+      //                 }
+      //                 .set { qc }
 
-     writeQCSummaryCSV(qc.header.concat(qc.pass).concat(qc.fail).toList())
+     //writeQCSummaryCSV(qc.header.concat(qc.pass).concat(qc.fail).toList())
 
-     collateSamples(qc.pass.map{ it[0] }
-                           .join(articMinIONMedaka.out.consensus_fasta, by: 0)
-                           .join(articRemoveUnmappedReads.out))
+     //collateSamples(qc.pass.map{ it[0] }
+     //                      .join(articMinIONMedaka.out.consensus_fasta, by: 0)
+     //                      .join(articRemoveUnmappedReads.out))
 
      if (params.outCram) {
         bamToCram(articMinIONMedaka.out.ptrim.map{ it[0] } 
@@ -113,7 +113,7 @@ workflow sequenceAnalysisMedaka {
 
       }
     emit:
-      qc_pass = collateSamples.out
+      //qc_pass = collateSamples.out
       reffasta = articDownloadScheme.out.reffasta
       vcf = articMinIONMedaka.out.vcf
 

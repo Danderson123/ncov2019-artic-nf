@@ -6,3 +6,6 @@ channels:
 dependencies:
   - pyyaml=5.3.1
   - artic-tools=0.3.1
+  - bcftools=1.12
+  - trim-galore=0.6.7
+  - longshot=0.4.5
