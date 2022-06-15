@@ -5,4 +5,4 @@ channels:
   - defaults
 dependencies:
   - pyyaml=5.3.1
-  - artic-tools
+  - artic-tools=0.3.1
